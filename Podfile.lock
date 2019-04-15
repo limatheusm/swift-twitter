@@ -1,0 +1,29 @@
+PODS:
+  - Kingfisher (5.2.0)
+  - Swifter (2.3.0)
+
+DEPENDENCIES:
+  - Kingfisher (~> 5.0)
+  - Swifter (from `https://github.com/mattdonnelly/Swifter.git`, tag `2.3.0`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Kingfisher
+
+EXTERNAL SOURCES:
+  Swifter:
+    :git: https://github.com/mattdonnelly/Swifter.git
+    :tag: 2.3.0
+
+CHECKOUT OPTIONS:
+  Swifter:
+    :git: https://github.com/mattdonnelly/Swifter.git
+    :tag: 2.3.0
+
+SPEC CHECKSUMS:
+  Kingfisher: 07067cfacf371117330dceb4b4b8f5c4b691ab42
+  Swifter: dbdc8b8d35efb46d5a636502545b6dd95eea6285
+
+PODFILE CHECKSUM: 4a4e6389cd3834a32c67f8a71b489620e6d945ae
+
+COCOAPODS: 1.5.3
