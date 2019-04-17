@@ -6,7 +6,7 @@
 //  Copyright © 2019 Matheus Lima. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 struct Constants {
     struct TwitterAPI {
@@ -28,4 +28,11 @@ struct Constants {
         static let UnknownReason = "An error ocurred"
         static let NoData = "Response returned with no data to decode"
     }
+    
+    struct Timeline {
+        static let StickyHeaderHeight = 44
+        static let TimelineRefreshOffsetThreshold: CGFloat = -65.0
+    }
+    
+    static let StatusBarHeight = 44
 }

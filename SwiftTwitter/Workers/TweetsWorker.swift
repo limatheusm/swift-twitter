@@ -21,12 +21,16 @@ class TweetsWorker {
         tweetsStore.searchTweets(searchText: searchText, completionHandler: completionHandler)
     }
     
+    func fetchUserTimeline(forUserID: String, completionHandler: @escaping (TweetsStoreResult<[Tweet]>) -> Void) {
+        tweetsStore.fetchUserTimeline(forUserID: forUserID, completionHandler: completionHandler)
+    }
 }
 
 // MARK: - Tweets store API
 
 protocol TweetsStoreProtocol {
     func searchTweets(searchText: String, completionHandler: @escaping (TweetsStoreResult<[Tweet]>) -> Void)
+    func fetchUserTimeline(forUserID: String, completionHandler: @escaping (TweetsStoreResult<[Tweet]>) -> Void)
 }
 
 // MARK: - Tweets Store Error
@@ -37,7 +41,7 @@ enum TweetsStoreError: Equatable, Error {
     case UnknownReason(String)
     case NoData(String)
     
-    public var description: String {
+    public var message: String {
         switch self {
         case .CannotFetch(let message):
             return message

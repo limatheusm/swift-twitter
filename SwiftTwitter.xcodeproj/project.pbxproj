@@ -24,10 +24,20 @@
 		FE646D1D225F76DC00259C82 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE646D1C225F76DC00259C82 /* Assets.xcassets */; };
 		FE646D20225F76DC00259C82 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE646D1E225F76DC00259C82 /* LaunchScreen.storyboard */; };
 		FE646D2B225F76DD00259C82 /* SwiftTwitterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE646D2A225F76DD00259C82 /* SwiftTwitterTests.swift */; };
+		FE8897992266D3A400F16935 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8897982266D3A300F16935 /* UIColor+Extensions.swift */; };
 		FE996A992264A34C00C35048 /* TweetTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE996A972264A34C00C35048 /* TweetTableViewCell.xib */; };
+		FE996AA02264A7AD00C35048 /* TimelinePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE996A9A2264A7AD00C35048 /* TimelinePresenter.swift */; };
+		FE996AA22264A7AD00C35048 /* TimelineRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE996A9C2264A7AD00C35048 /* TimelineRouter.swift */; };
+		FE996AA32264A7AD00C35048 /* TimelineModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE996A9D2264A7AD00C35048 /* TimelineModels.swift */; };
+		FE996AA42264A7AD00C35048 /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE996A9E2264A7AD00C35048 /* TimelineViewController.swift */; };
+		FE996AA52264A7AD00C35048 /* TimelineInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE996A9F2264A7AD00C35048 /* TimelineInteractor.swift */; };
+		FE996AA72264C01100C35048 /* AvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE996AA62264C01100C35048 /* AvatarImageView.swift */; };
+		FE996AA92264C7FE00C35048 /* FollowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE996AA82264C7FE00C35048 /* FollowButton.swift */; };
+		FE996AAD22654E0600C35048 /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE996AAC22654E0600C35048 /* BackButton.swift */; };
 		FEBB08EC2260F8BF008D9664 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBB08EB2260F8BF008D9664 /* Constants.swift */; };
 		FEBB08EE2260FB03008D9664 /* TwitterAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBB08ED2260FB03008D9664 /* TwitterAPI.swift */; };
 		FEBB08F02261096A008D9664 /* TweetsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBB08EF2261096A008D9664 /* TweetsWorker.swift */; };
+		FEFA6B5B22678B4400865240 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEFA6B5A22678B4400865240 /* UIViewController+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,10 +76,20 @@
 		FE646D26225F76DD00259C82 /* SwiftTwitterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftTwitterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE646D2A225F76DD00259C82 /* SwiftTwitterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftTwitterTests.swift; sourceTree = "<group>"; };
 		FE646D2C225F76DD00259C82 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FE8897982266D3A300F16935 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		FE996A972264A34C00C35048 /* TweetTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TweetTableViewCell.xib; sourceTree = "<group>"; };
+		FE996A9A2264A7AD00C35048 /* TimelinePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelinePresenter.swift; sourceTree = "<group>"; };
+		FE996A9C2264A7AD00C35048 /* TimelineRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineRouter.swift; sourceTree = "<group>"; };
+		FE996A9D2264A7AD00C35048 /* TimelineModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineModels.swift; sourceTree = "<group>"; };
+		FE996A9E2264A7AD00C35048 /* TimelineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
+		FE996A9F2264A7AD00C35048 /* TimelineInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineInteractor.swift; sourceTree = "<group>"; };
+		FE996AA62264C01100C35048 /* AvatarImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarImageView.swift; sourceTree = "<group>"; };
+		FE996AA82264C7FE00C35048 /* FollowButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowButton.swift; sourceTree = "<group>"; };
+		FE996AAC22654E0600C35048 /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		FEBB08EB2260F8BF008D9664 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		FEBB08ED2260FB03008D9664 /* TwitterAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterAPI.swift; sourceTree = "<group>"; };
 		FEBB08EF2261096A008D9664 /* TweetsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetsWorker.swift; sourceTree = "<group>"; };
+		FEFA6B5A22678B4400865240 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +137,8 @@
 			children = (
 				FE21CB7822613C5200277951 /* Date+Extensions.swift */,
 				FE21CB7A2262705D00277951 /* UITableView+Extensions.swift */,
+				FE8897982266D3A300F16935 /* UIColor+Extensions.swift */,
+				FEFA6B5A22678B4400865240 /* UIViewController+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -170,6 +192,11 @@
 		FE34285422600B7A00619AF7 /* Timeline */ = {
 			isa = PBXGroup;
 			children = (
+				FE996A9E2264A7AD00C35048 /* TimelineViewController.swift */,
+				FE996A9F2264A7AD00C35048 /* TimelineInteractor.swift */,
+				FE996A9A2264A7AD00C35048 /* TimelinePresenter.swift */,
+				FE996A9C2264A7AD00C35048 /* TimelineRouter.swift */,
+				FE996A9D2264A7AD00C35048 /* TimelineModels.swift */,
 			);
 			path = Timeline;
 			sourceTree = "<group>";
@@ -178,6 +205,9 @@
 			isa = PBXGroup;
 			children = (
 				FE996A952264A32800C35048 /* TableViewCell */,
+				FE996AA62264C01100C35048 /* AvatarImageView.swift */,
+				FE996AA82264C7FE00C35048 /* FollowButton.swift */,
+				FE996AAC22654E0600C35048 /* BackButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -423,10 +453,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE996AA92264C7FE00C35048 /* FollowButton.swift in Sources */,
 				FE21CB7B2262705D00277951 /* UITableView+Extensions.swift in Sources */,
 				FEBB08EE2260FB03008D9664 /* TwitterAPI.swift in Sources */,
+				FE996AA22264A7AD00C35048 /* TimelineRouter.swift in Sources */,
+				FEFA6B5B22678B4400865240 /* UIViewController+Extensions.swift in Sources */,
+				FE996AA32264A7AD00C35048 /* TimelineModels.swift in Sources */,
+				FE996AA52264A7AD00C35048 /* TimelineInteractor.swift in Sources */,
+				FE996AA72264C01100C35048 /* AvatarImageView.swift in Sources */,
 				FE34286122600BB800619AF7 /* SearchViewController.swift in Sources */,
 				FE34286222600BB800619AF7 /* SearchInteractor.swift in Sources */,
+				FE996AA42264A7AD00C35048 /* TimelineViewController.swift in Sources */,
 				FE34286422600CB400619AF7 /* Tweet.swift in Sources */,
 				FE34285F22600BB800619AF7 /* SearchRouter.swift in Sources */,
 				FE34286922602B7F00619AF7 /* TweetTableViewCell.swift in Sources */,
@@ -434,7 +471,10 @@
 				FEBB08EC2260F8BF008D9664 /* Constants.swift in Sources */,
 				FEBB08F02261096A008D9664 /* TweetsWorker.swift in Sources */,
 				FE646D16225F76DC00259C82 /* AppDelegate.swift in Sources */,
+				FE996AAD22654E0600C35048 /* BackButton.swift in Sources */,
+				FE8897992266D3A400F16935 /* UIColor+Extensions.swift in Sources */,
 				FE34285D22600BB800619AF7 /* SearchPresenter.swift in Sources */,
+				FE996AA02264A7AD00C35048 /* TimelinePresenter.swift in Sources */,
 				FE34286622601CC500619AF7 /* User.swift in Sources */,
 				FE34286022600BB800619AF7 /* SearchModels.swift in Sources */,
 			);

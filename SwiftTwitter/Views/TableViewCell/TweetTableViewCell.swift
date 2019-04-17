@@ -24,18 +24,6 @@ class TweetTableViewCell: UITableViewCell {
     @IBOutlet weak var favoriteCountLabel: UILabel!
     @IBOutlet weak var replyToUsernameLabel: UILabel!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-        roundImage()
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
     override func prepareForReuse() {
         profileImageView.image = nil
         nameLabel.text = nil
@@ -46,10 +34,5 @@ class TweetTableViewCell: UITableViewCell {
         replyCountLabel.text = nil
         retweetCountLabel.text = nil
         favoriteCountLabel.text = nil
-    }
-    
-    private func roundImage() {
-        profileImageView.layer.cornerRadius = profileImageView.frame.width / 2
-        profileImageView.clipsToBounds = true
     }
 }

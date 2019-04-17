@@ -9,11 +9,14 @@
 import Foundation
 
 struct User: Equatable {
+    var id: String?
     var username: String? // "@..."
     var name: String?
     var profileImageURL: String?
+    var profileBackgroundColor: String?
     var followersCount: Int?
     var friendsCount: Int? // "Following"
+    var statusesCount: Int? // "Quantity of user tweets"
     var description: String?
     var bannerImageURL: String?
     var location: String?

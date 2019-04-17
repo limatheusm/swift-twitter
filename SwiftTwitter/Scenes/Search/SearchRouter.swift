@@ -13,7 +13,7 @@
 import UIKit
 
 @objc protocol SearchRoutingLogic {
-    //func routeToSomewhere(segue: UIStoryboardSegue?)
+    func routeToTimeline(segue: UIStoryboardSegue?)
 }
 
 protocol SearchDataPassing {
@@ -26,32 +26,37 @@ class SearchRouter: NSObject, SearchRoutingLogic, SearchDataPassing {
     
     // MARK: Routing
     
-    //func routeToSomewhere(segue: UIStoryboardSegue?)
-    //{
-    //  if let segue = segue {
-    //    let destinationVC = segue.destination as! SomewhereViewController
-    //    var destinationDS = destinationVC.router!.dataStore!
-    //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-    //  } else {
-    //    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-    //    let destinationVC = storyboard.instantiateViewController(withIdentifier: "SomewhereViewController") as! SomewhereViewController
-    //    var destinationDS = destinationVC.router!.dataStore!
-    //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-    //    navigateToSomewhere(source: viewController!, destination: destinationVC)
-    //  }
-    //}
+    func routeToTimeline(segue: UIStoryboardSegue?) {
+        if let segue = segue {
+            guard let destinationVC = segue.destination as? TimelineViewController,
+                  var destinationDS = destinationVC.router?.dataStore else {
+                return
+            }
+            
+            passDataToTimeline(source: dataStore!, destination: &destinationDS)
+        } else {
+            guard let destinationVC = viewController?.storyboard?.instantiateViewController(withIdentifier: "TimelineViewController") as? TimelineViewController, var destinationDS = destinationVC.router?.dataStore else {
+                return
+            }
+            
+            self.passDataToTimeline(source: dataStore!, destination: &destinationDS)
+            self.navigateToTimeline(source: viewController!, destination: destinationVC)
+        }
+    }
     
     // MARK: Navigation
     
-    //func navigateToSomewhere(source: SearchViewController, destination: SomewhereViewController)
-    //{
-    //  source.show(destination, sender: nil)
-    //}
+    private func navigateToTimeline(source: SearchViewController, destination: TimelineViewController) {
+        source.show(destination, sender: nil)
+    }
     
     // MARK: Passing data
     
-    //func passDataToSomewhere(source: SearchDataStore, destination: inout SomewhereDataStore)
-    //{
-    //  destination.name = source.name
-    //}
+    private func passDataToTimeline(source: SearchDataStore, destination: inout TimelineDataStore) {
+        guard let selectedRow = viewController?.tableView.indexPathForSelectedRow?.row else {
+            return
+        }
+        
+        destination.user = source.tweets?[selectedRow].user
+    }
 }
