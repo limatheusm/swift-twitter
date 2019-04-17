@@ -32,7 +32,7 @@ enum Search {
             struct DisplayedTweet {
                 var authorName: String
                 var authorUsername: String
-                var authorProfileImageUrl: String?
+                var authorProfileImageUrl: URL?
                 var replyToUsername: NSMutableAttributedString?
                 var text: String
                 var date: String

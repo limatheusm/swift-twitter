@@ -89,6 +89,13 @@ class SearchViewController: UIViewController {
         }
     }
     
+    private func prepareUI() {
+        setupSearchBar()
+        setupRefreshControl()
+        
+        interactor?.searchTweets(request: Search.SearchTweets.Request(searchText: "Twitch"))
+    }
+    
     // MARK: - Routing
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -104,12 +111,19 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupSearchBar()
-        setupRefreshControl()
+        prepareUI()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let selected = tableView.indexPathForSelectedRow {
+            tableView.deselectRow(at: selected, animated: false)
+        }
     }
     
     private func loadUI() {
         tableView.reloadData()
+        // Scroll to top
         let topIndex = IndexPath(row: 0, section: 0)
         tableView.scrollToRow(at: topIndex, at: .top, animated: true)
         tableView.isHidden = false
@@ -125,7 +139,7 @@ class SearchViewController: UIViewController {
     }
     
     @objc func refresh(_ refreshControl: UIRefreshControl) {
-        searchTweets()
+       interactor?.refreshTweets()
     }
 }
 
@@ -140,8 +154,8 @@ extension SearchViewController: SearchDisplayLogic {
     }
     
     func displaySearchedTweetsError(viewModel: Search.SearchTweets.ViewModel) {
-        hintLabel.text = viewModel.error
-        tableView.isHidden = true
+        guard let errorMessage = viewModel.error else { return }
+        showInfo(withTitle: "Ops!", withMessage: errorMessage)
     }
     
     func startLoading() {
@@ -160,10 +174,6 @@ extension SearchViewController: SearchDisplayLogic {
 // MARK: - UITableViewDataSource
 
 extension SearchViewController: UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return displayedTweets.count
     }
@@ -172,9 +182,7 @@ extension SearchViewController: UITableViewDataSource {
         let displayedTweet = displayedTweets[indexPath.row]
         let cell = Bundle.main.loadNibNamed("TweetTableViewCell", owner: self, options: nil)?.first as! TweetTableViewCell
         
-        // download and set image
-        let url = URL(string: displayedTweet.authorProfileImageUrl ?? "")
-        cell.profileImageView.kf.setImage(with: url)
+        cell.profileImageView.kf.setImage(with: displayedTweet.authorProfileImageUrl)
         cell.profileImageView.kf.indicatorType = .activity
         cell.nameLabel.text = displayedTweet.authorName
         cell.usernameLabel.text = displayedTweet.authorUsername
@@ -186,6 +194,14 @@ extension SearchViewController: UITableViewDataSource {
         cell.favoriteCountLabel.text = displayedTweet.favoriteCount
         
         return cell
+    }
+}
+
+// MARK: - UITableviewDelegate
+
+extension SearchViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        router?.routeToTimeline(segue: nil)
     }
 }
 

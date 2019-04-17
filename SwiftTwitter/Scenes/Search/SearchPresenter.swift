@@ -55,7 +55,7 @@ class SearchPresenter: SearchPresentationLogic {
     func presentSearchedTweets(error: TweetsStoreError) {
         let viewModel = Search.SearchTweets.ViewModel(
             displayedTweets: nil,
-            error: error.description
+            error: error.message
         )
     
         viewController?.displaySearchedTweetsError(viewModel: viewModel)
@@ -67,7 +67,7 @@ class SearchPresenter: SearchPresentationLogic {
         let displayedTweet = Search.SearchTweets.ViewModel.DisplayedTweet(
             authorName: tweet.user.name ?? "",
             authorUsername: "@\(tweet.user.username ?? "")",
-            authorProfileImageUrl: tweet.user.profileImageURL,
+            authorProfileImageUrl: URL(string: tweet.user.profileImageURL ?? ""),
             replyToUsername: format(replyToUsername: tweet.replyToUsername),
             text: tweet.fullText ?? "",
             date: format(date: tweet.createdAt),

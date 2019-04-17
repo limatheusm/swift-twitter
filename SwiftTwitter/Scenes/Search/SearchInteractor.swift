@@ -14,9 +14,11 @@ import UIKit
 
 protocol SearchBusinessLogic {
     func searchTweets(request: Search.SearchTweets.Request)
+    func refreshTweets()
 }
 
 protocol SearchDataStore {
+    var searchText: String? { get }
     var tweets: [Tweet]? { get }
 }
 
@@ -25,12 +27,44 @@ class SearchInteractor: SearchBusinessLogic, SearchDataStore {
     var worker = TweetsWorker(tweetsStore: TwitterAPI())
 
     var tweets: [Tweet]?
+    var searchText: String?
     
     // MARK: - Search tweets
     
     func searchTweets(request: Search.SearchTweets.Request) {
         presenter?.presentLoading(isActive: true)
+        searchText = request.searchText
+        
         worker.searchTweets(using: request.searchText) { (result) in
+            CATransaction.begin()
+            CATransaction.setCompletionBlock { () -> Void in
+                /* wait for endRefreshing animation to complete
+                 before reloadData so table view does not flicker to top
+                 then continue endRefreshing animation */
+                switch result {
+                case .Failure(let error):
+                    self.presenter?.presentSearchedTweets(error: error)
+                case .Success(let tweets):
+                    self.tweets = tweets
+                    let response = Search.SearchTweets.Response(tweets: tweets)
+                    self.presenter?.presentSearchedTweets(response: response)
+                }
+            }
+            self.presenter?.presentLoading(isActive: false)
+            CATransaction.commit()
+        }
+    }
+    
+    // MARK: - Refresh Tweets
+    
+    func refreshTweets() {
+        presenter?.presentLoading(isActive: true)
+        guard let searchText = searchText else {
+            presenter?.presentLoading(isActive: false)
+            return
+        }
+        
+        worker.searchTweets(using: searchText) { (result) in
             CATransaction.begin()
             CATransaction.setCompletionBlock { () -> Void in
                 /* wait for endRefreshing animation to complete
