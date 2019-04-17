@@ -92,8 +92,6 @@ class SearchViewController: UIViewController {
     private func prepareUI() {
         setupSearchBar()
         setupRefreshControl()
-        
-        interactor?.searchTweets(request: Search.SearchTweets.Request(searchText: "Twitch"))
     }
     
     // MARK: - Routing
