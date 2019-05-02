@@ -10,8 +10,14 @@ import UIKit
 
 struct Constants {
     struct TwitterAPI {
+        static let CallbackURL = "swift-twitter://success"
         static let ConsumerAPIKey = "489sNgzZLitRyLyo66pV8A70U"
         static let ConsumerAPISecretKey = "zscFfQWTJR4BADWoLJtJSqSMtDSRVGuHWgUKLEgpOLNyZBgZ7B"
+        
+        struct UserDefaults {
+            static let OAuthTokenKey = "oauth_token"
+            static let OAuthSecretKey = "oauth_secret"
+        }
     }
     
     struct DateFormat {

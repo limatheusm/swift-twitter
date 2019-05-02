@@ -11,9 +11,24 @@ import Swifter
 
 class TwitterAPI: TweetsStoreProtocol {
     let swifter = Swifter(
-        consumerKey: Constants.TwitterAPI.ConsumerAPIKey,
-        consumerSecret: Constants.TwitterAPI.ConsumerAPISecretKey
+            consumerKey: Constants.TwitterAPI.ConsumerAPIKey,
+            consumerSecret: Constants.TwitterAPI.ConsumerAPISecretKey
     )
+    
+    var swifterAuthenticated: Swifter? = {
+        if let userAccessToken =
+            UserDefaults.standard.value(forKey: Constants.TwitterAPI.UserDefaults.OAuthTokenKey) as? String,
+            let userSecretToken =
+            UserDefaults.standard.value(forKey: Constants.TwitterAPI.UserDefaults.OAuthSecretKey) as? String {
+            return Swifter(
+                consumerKey: Constants.TwitterAPI.ConsumerAPIKey,
+                consumerSecret: Constants.TwitterAPI.ConsumerAPISecretKey,
+                oauthToken: userAccessToken,
+                oauthTokenSecret: userSecretToken
+            )
+        }
+        return nil
+    }()
     
     func fetchUserTimeline(forUserID: String, completionHandler: @escaping (TweetsStoreResult<[Tweet]>) -> Void) {
         swifter.getTimeline(for: UserTag.id(forUserID), count: 100, includeRetweets: false, tweetMode: .extended, success: { (responseJSON) in
@@ -22,7 +37,6 @@ class TwitterAPI: TweetsStoreProtocol {
                 return
             }
             
-            // Create tweets w/ Tweet model
             var tweets: [Tweet] = []
             
             for tweetJSON in dataArray {
@@ -46,7 +60,6 @@ class TwitterAPI: TweetsStoreProtocol {
                 return
             }
             
-            // Create tweets w/ Tweet model
             var tweets: [Tweet] = []
             
             for tweetJSON in dataArray {
@@ -60,6 +73,21 @@ class TwitterAPI: TweetsStoreProtocol {
         }) { (error) in
             completionHandler(.Failure(.CannotFetch(error.localizedDescription)))
         }
+    }
+    
+    func loginAuth(completionHandler: @escaping (TweetsStoreResult<Credential.OAuthAccessToken>) -> Void) {
+        guard let callbackURL = URL(string: Constants.TwitterAPI.CallbackURL) else {
+            return completionHandler(.Failure(.CannotDecode("callback URL failed")))
+        }
+        
+        swifter.authorize(withCallback: callbackURL, presentingFrom: nil, success: { accessToken, response in
+            guard let accessToken = accessToken else {
+                return completionHandler(.Failure(.NoData("Access Token not found")))
+            }
+            completionHandler(.Success(accessToken))
+        }, failure: { error in
+            completionHandler(.Failure(.CannotFetch(error.localizedDescription)))
+        })
     }
 }
 

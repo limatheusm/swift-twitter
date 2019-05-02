@@ -7,15 +7,27 @@
 //
 
 import UIKit
+import Swifter
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        if userIsLogged() {
+            guard let firstVC = storyboard.instantiateViewController(
+                withIdentifier: "SearchViewController") as? SearchViewController else { return true }
+            window?.rootViewController = UINavigationController(rootViewController: firstVC)
+        } else {
+            guard let firstVC = storyboard.instantiateViewController(
+                withIdentifier: "LoginViewController") as? LoginViewController else { return true }
+            window?.rootViewController = UINavigationController(rootViewController: firstVC)
+        }
+    
         return true
     }
 
@@ -41,6 +53,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        Swifter.handleOpenURL(url)
+        return true
+    }
 }
 
+extension AppDelegate {
+    private func userIsLogged() -> Bool {
+        let userAccessToken = UserDefaults.standard.value(forKey: Constants.TwitterAPI.UserDefaults.OAuthTokenKey)
+        let userSecretToken = UserDefaults.standard.value(forKey: Constants.TwitterAPI.UserDefaults.OAuthSecretKey)
+        return (userAccessToken != nil) && (userSecretToken != nil)
+    }
+}

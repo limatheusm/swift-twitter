@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Swifter
 
 // MARK: - Tweets worker
 
@@ -24,6 +25,10 @@ class TweetsWorker {
     func fetchUserTimeline(forUserID: String, completionHandler: @escaping (TweetsStoreResult<[Tweet]>) -> Void) {
         tweetsStore.fetchUserTimeline(forUserID: forUserID, completionHandler: completionHandler)
     }
+    
+    func loginAuth(completionHandler: @escaping (TweetsStoreResult<Credential.OAuthAccessToken>) -> Void) {
+        tweetsStore.loginAuth(completionHandler: completionHandler)
+    }
 }
 
 // MARK: - Tweets store API
@@ -31,6 +36,7 @@ class TweetsWorker {
 protocol TweetsStoreProtocol {
     func searchTweets(searchText: String, completionHandler: @escaping (TweetsStoreResult<[Tweet]>) -> Void)
     func fetchUserTimeline(forUserID: String, completionHandler: @escaping (TweetsStoreResult<[Tweet]>) -> Void)
+    func loginAuth(completionHandler: @escaping (TweetsStoreResult<Credential.OAuthAccessToken>) -> Void)
 }
 
 // MARK: - Tweets Store Error

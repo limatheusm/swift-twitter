@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		455F0D783FB04B9E2B290B95 /* Pods_SwiftTwitterTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5AA2A29B5324ED0FB9E7F50 /* Pods_SwiftTwitterTests.framework */; };
 		DC3F7AD50E53D1425A9BA356 /* Pods_SwiftTwitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 200A8416EEC8044C90C9F56D /* Pods_SwiftTwitter.framework */; };
+		FE1AAE8F227B744C00DCA735 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1AAE89227B744C00DCA735 /* LoginPresenter.swift */; };
+		FE1AAE91227B744C00DCA735 /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1AAE8B227B744C00DCA735 /* LoginRouter.swift */; };
+		FE1AAE92227B744C00DCA735 /* LoginModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1AAE8C227B744C00DCA735 /* LoginModels.swift */; };
+		FE1AAE93227B744C00DCA735 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1AAE8D227B744C00DCA735 /* LoginViewController.swift */; };
+		FE1AAE94227B744C00DCA735 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1AAE8E227B744C00DCA735 /* LoginInteractor.swift */; };
 		FE21CB7922613C5200277951 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE21CB7822613C5200277951 /* Date+Extensions.swift */; };
 		FE21CB7B2262705D00277951 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE21CB7A2262705D00277951 /* UITableView+Extensions.swift */; };
 		FE34285D22600BB800619AF7 /* SearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE34285722600BB800619AF7 /* SearchPresenter.swift */; };
@@ -25,7 +30,6 @@
 		FE646D20225F76DC00259C82 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE646D1E225F76DC00259C82 /* LaunchScreen.storyboard */; };
 		FE646D2B225F76DD00259C82 /* SwiftTwitterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE646D2A225F76DD00259C82 /* SwiftTwitterTests.swift */; };
 		FE8897992266D3A400F16935 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8897982266D3A300F16935 /* UIColor+Extensions.swift */; };
-		FE94EBB8227B607500C1DA37 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE94EBB2227B607500C1DA37 /* LoginViewController.swift */; };
 		FE94EBBD227B696500C1DA37 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE94EBBC227B696500C1DA37 /* RoundedButton.swift */; };
 		FE996A992264A34C00C35048 /* TweetTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE996A972264A34C00C35048 /* TweetTableViewCell.xib */; };
 		FE996AA02264A7AD00C35048 /* TimelinePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE996A9A2264A7AD00C35048 /* TimelinePresenter.swift */; };
@@ -59,6 +63,11 @@
 		9A96E9FEB6DB9577E3CAC118 /* Pods-SwiftTwitter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftTwitter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftTwitter/Pods-SwiftTwitter.debug.xcconfig"; sourceTree = "<group>"; };
 		A5AA2A29B5324ED0FB9E7F50 /* Pods_SwiftTwitterTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftTwitterTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1B929E52AB9061C9EB53F1E /* Pods-SwiftTwitterTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftTwitterTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftTwitterTests/Pods-SwiftTwitterTests.release.xcconfig"; sourceTree = "<group>"; };
+		FE1AAE89227B744C00DCA735 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
+		FE1AAE8B227B744C00DCA735 /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
+		FE1AAE8C227B744C00DCA735 /* LoginModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModels.swift; sourceTree = "<group>"; };
+		FE1AAE8D227B744C00DCA735 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		FE1AAE8E227B744C00DCA735 /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
 		FE21CB7822613C5200277951 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		FE21CB7A2262705D00277951 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		FE34285722600BB800619AF7 /* SearchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPresenter.swift; sourceTree = "<group>"; };
@@ -79,7 +88,6 @@
 		FE646D2A225F76DD00259C82 /* SwiftTwitterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftTwitterTests.swift; sourceTree = "<group>"; };
 		FE646D2C225F76DD00259C82 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FE8897982266D3A300F16935 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
-		FE94EBB2227B607500C1DA37 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		FE94EBBC227B696500C1DA37 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		FE996A972264A34C00C35048 /* TweetTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TweetTableViewCell.xib; sourceTree = "<group>"; };
 		FE996A9A2264A7AD00C35048 /* TimelinePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelinePresenter.swift; sourceTree = "<group>"; };
@@ -278,7 +286,11 @@
 		FEB1EE13227B601A00A5E50B /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				FE94EBB2227B607500C1DA37 /* LoginViewController.swift */,
+				FE1AAE89227B744C00DCA735 /* LoginPresenter.swift */,
+				FE1AAE8B227B744C00DCA735 /* LoginRouter.swift */,
+				FE1AAE8C227B744C00DCA735 /* LoginModels.swift */,
+				FE1AAE8D227B744C00DCA735 /* LoginViewController.swift */,
+				FE1AAE8E227B744C00DCA735 /* LoginInteractor.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -471,19 +483,21 @@
 				FE21CB7B2262705D00277951 /* UITableView+Extensions.swift in Sources */,
 				FEBB08EE2260FB03008D9664 /* TwitterAPI.swift in Sources */,
 				FE996AA22264A7AD00C35048 /* TimelineRouter.swift in Sources */,
-				FE94EBB8227B607500C1DA37 /* LoginViewController.swift in Sources */,
 				FEFA6B5B22678B4400865240 /* UIViewController+Extensions.swift in Sources */,
 				FE996AA32264A7AD00C35048 /* TimelineModels.swift in Sources */,
 				FE996AA52264A7AD00C35048 /* TimelineInteractor.swift in Sources */,
 				FE996AA72264C01100C35048 /* AvatarImageView.swift in Sources */,
+				FE1AAE8F227B744C00DCA735 /* LoginPresenter.swift in Sources */,
 				FE34286122600BB800619AF7 /* SearchViewController.swift in Sources */,
 				FE34286222600BB800619AF7 /* SearchInteractor.swift in Sources */,
 				FE996AA42264A7AD00C35048 /* TimelineViewController.swift in Sources */,
 				FE34286422600CB400619AF7 /* Tweet.swift in Sources */,
 				FE34285F22600BB800619AF7 /* SearchRouter.swift in Sources */,
 				FE34286922602B7F00619AF7 /* TweetTableViewCell.swift in Sources */,
+				FE1AAE92227B744C00DCA735 /* LoginModels.swift in Sources */,
 				FE21CB7922613C5200277951 /* Date+Extensions.swift in Sources */,
 				FEBB08EC2260F8BF008D9664 /* Constants.swift in Sources */,
+				FE1AAE93227B744C00DCA735 /* LoginViewController.swift in Sources */,
 				FEBB08F02261096A008D9664 /* TweetsWorker.swift in Sources */,
 				FE646D16225F76DC00259C82 /* AppDelegate.swift in Sources */,
 				FE996AAD22654E0600C35048 /* BackButton.swift in Sources */,
@@ -492,6 +506,8 @@
 				FE996AA02264A7AD00C35048 /* TimelinePresenter.swift in Sources */,
 				FE34286622601CC500619AF7 /* User.swift in Sources */,
 				FE34286022600BB800619AF7 /* SearchModels.swift in Sources */,
+				FE1AAE94227B744C00DCA735 /* LoginInteractor.swift in Sources */,
+				FE1AAE91227B744C00DCA735 /* LoginRouter.swift in Sources */,
 				FE94EBBD227B696500C1DA37 /* RoundedButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

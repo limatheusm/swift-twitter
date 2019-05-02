@@ -13,7 +13,7 @@
         <!--Login View Controller-->
         <scene sceneID="b2z-DI-BU7">
             <objects>
-                <viewController id="pN6-X4-Jbz" customClass="LoginViewController" customModule="SwiftTwitter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="pN6-X4-Jbz" customClass="LoginViewController" customModule="SwiftTwitter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SLn-T2-EYq">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -39,7 +39,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <segue destination="ugm-Se-8JN" kind="show" id="Hwm-7J-Tt4"/>
+                                            <action selector="loginAction:" destination="pN6-X4-Jbz" eventType="touchUpInside" id="Etg-Qo-mkB"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -68,6 +68,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="0pp-1l-zNS"/>
                     <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <segue destination="ugm-Se-8JN" kind="show" identifier="LoginSegue" id="nbk-mw-itc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Vm-GH-fU9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -76,7 +79,7 @@
         <!--Search View Controller-->
         <scene sceneID="d1Y-N7-4lo">
             <objects>
-                <viewController id="MLi-Hk-Rjk" customClass="SearchViewController" customModule="SwiftTwitter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchViewController" id="MLi-Hk-Rjk" customClass="SearchViewController" customModule="SwiftTwitter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GoY-UY-Fep">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
