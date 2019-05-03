@@ -29,6 +29,10 @@ class TweetsWorker {
     func loginAuth(completionHandler: @escaping (TweetsStoreResult<Credential.OAuthAccessToken>) -> Void) {
         tweetsStore.loginAuth(completionHandler: completionHandler)
     }
+    
+    func verifyCredentials(completionHandler: @escaping (TweetsStoreResult<[String: String?]>) -> Void) {
+        tweetsStore.verifyCredentials(completionHandler: completionHandler)
+    }
 }
 
 // MARK: - Tweets store API
@@ -37,6 +41,7 @@ protocol TweetsStoreProtocol {
     func searchTweets(searchText: String, completionHandler: @escaping (TweetsStoreResult<[Tweet]>) -> Void)
     func fetchUserTimeline(forUserID: String, completionHandler: @escaping (TweetsStoreResult<[Tweet]>) -> Void)
     func loginAuth(completionHandler: @escaping (TweetsStoreResult<Credential.OAuthAccessToken>) -> Void)
+    func verifyCredentials(completionHandler: @escaping (TweetsStoreResult<[String: String?]>) -> Void)
 }
 
 // MARK: - Tweets Store Error
@@ -46,6 +51,7 @@ enum TweetsStoreError: Equatable, Error {
     case CannotDecode(String)
     case UnknownReason(String)
     case NoData(String)
+    case UserNotLogged(String)
     
     public var message: String {
         switch self {
@@ -56,6 +62,8 @@ enum TweetsStoreError: Equatable, Error {
         case .UnknownReason(let message):
             return message
         case .NoData(let message):
+            return message
+        case .UserNotLogged(let message):
             return message
         }
     }

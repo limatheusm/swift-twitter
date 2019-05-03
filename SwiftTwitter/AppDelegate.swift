@@ -16,17 +16,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        
-        if userIsLogged() {
-            guard let firstVC = storyboard.instantiateViewController(
-                withIdentifier: "SearchViewController") as? SearchViewController else { return true }
-            window?.rootViewController = UINavigationController(rootViewController: firstVC)
-        } else {
-            guard let firstVC = storyboard.instantiateViewController(
-                withIdentifier: "LoginViewController") as? LoginViewController else { return true }
-            window?.rootViewController = UINavigationController(rootViewController: firstVC)
-        }
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        self.window?.rootViewController = RootViewController()
+        self.window?.makeKeyAndVisible()
     
         return true
     }
@@ -60,9 +52,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 extension AppDelegate {
-    private func userIsLogged() -> Bool {
-        let userAccessToken = UserDefaults.standard.value(forKey: Constants.TwitterAPI.UserDefaults.OAuthTokenKey)
-        let userSecretToken = UserDefaults.standard.value(forKey: Constants.TwitterAPI.UserDefaults.OAuthSecretKey)
-        return (userAccessToken != nil) && (userSecretToken != nil)
+    static var shared: AppDelegate {
+        return UIApplication.shared.delegate as! AppDelegate
+    }
+    
+    var rootViewController: RootViewController {
+        return window!.rootViewController as! RootViewController
     }
 }

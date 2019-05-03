@@ -21,19 +21,19 @@ class LoginViewController: UIViewController {
     var interactor: LoginBusinessLogic?
     var router: (NSObjectProtocol & LoginRoutingLogic & LoginDataPassing)?
     
-    // MARK: Object lifecycle
+    // MARK: - Object lifecycle
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        setup()
+        self.setup()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        setup()
+        self.setup()
     }
     
-    // MARK: Setup
+    // MARK: - Setup
     
     private func setup() {
         let viewController = self
@@ -48,41 +48,48 @@ class LoginViewController: UIViewController {
         router.dataStore = interactor
     }
     
-    // MARK: Routing
+    // MARK: - Routing
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let scene = segue.identifier {
             let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
-            if let router = router, router.responds(to: selector) {
+            if let router = self.router, router.responds(to: selector) {
                 router.perform(selector, with: segue)
             }
         }
     }
     
-    // MARK: View lifecycle
+    // MARK: - Instanciation
+    
+    class func instanceFromStoryboard() -> LoginViewController {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        return storyboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+    }
+
+    // MARK: - View lifecycle
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: false)
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     @IBAction func loginAction(_ sender: Any) {
-        login()
+        self.login()
     }
     
     func login() {
         let request = Login.OAuth.Request()
-        interactor?.login(request: request)
+        self.interactor?.login(request: request)
     }
 }
 
 extension LoginViewController: LoginDisplayLogic {
     func displayError(viewModel: Login.OAuth.ViewModel) {
         guard let errorMessage = viewModel.errorMessage else { return }
-        showInfo(withTitle: "Ops!", withMessage: errorMessage)
+        self.showInfo(withTitle: "Ops!", withMessage: errorMessage)
     }
     
     func displayLoginSuccess(viewModel: Login.OAuth.ViewModel) {
-        router?.routeToSearch()
+        self.router?.routeToSearch()
     }
 }

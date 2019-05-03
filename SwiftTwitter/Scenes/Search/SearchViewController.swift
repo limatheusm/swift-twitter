@@ -79,19 +79,19 @@ class SearchViewController: UIViewController {
     }
     
     private func setupRefreshControl() {
-        refreshControl.backgroundColor = UIColor(named: "ExtraLightGray")
-        refreshControl.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
+        self.refreshControl.backgroundColor = UIColor(named: "ExtraLightGray")
+        self.refreshControl.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
         
         if #available(iOS 10.0, *) {
-            tableView.refreshControl = refreshControl
+            tableView.refreshControl = self.refreshControl
         } else {
-            tableView.backgroundView = refreshControl
+            tableView.backgroundView = self.refreshControl
         }
     }
     
     private func prepareUI() {
-        setupSearchBar()
-        setupRefreshControl()
+        self.setupSearchBar()
+        self.setupRefreshControl()
     }
     
     // MARK: - Routing
@@ -105,6 +105,20 @@ class SearchViewController: UIViewController {
         }
     }
     
+    // MARK: - Instanciation
+    
+    class func instanceFromStoryboard(userID: String?, userProfileImageURL: URL?) -> SearchViewController {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewController(
+            withIdentifier: "SearchViewController"
+        ) as! SearchViewController
+        
+        controller.router?.dataStore?.userID = userID
+        controller.router?.dataStore?.userProfileImageURL = userProfileImageURL
+        
+        return controller
+    }
+    
     // MARK: - View lifecycle
     
     override func viewDidLoad() {
@@ -114,30 +128,30 @@ class SearchViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if let selected = tableView.indexPathForSelectedRow {
-            tableView.deselectRow(at: selected, animated: false)
+        if let selected = self.tableView.indexPathForSelectedRow {
+            self.tableView.deselectRow(at: selected, animated: false)
         }
     }
     
     private func loadUI() {
-        tableView.reloadData()
+        self.tableView.reloadData()
         // Scroll to top
         let topIndex = IndexPath(row: 0, section: 0)
-        tableView.scrollToRow(at: topIndex, at: .top, animated: true)
-        tableView.isHidden = false
+        self.tableView.scrollToRow(at: topIndex, at: .top, animated: true)
+        self.tableView.isHidden = false
     }
     
     // MARK: - Search Tweets Logic
     
     private func searchTweets() {
-        guard let searchText = searchBar?.text, !searchText.isEmpty else { return }
+        guard let searchText = self.searchBar?.text, !searchText.isEmpty else { return }
         
         let request = Search.SearchTweets.Request(searchText: searchText)
-        interactor?.searchTweets(request: request)
+        self.interactor?.searchTweets(request: request)
     }
     
     @objc func refresh(_ refreshControl: UIRefreshControl) {
-       interactor?.refreshTweets()
+       self.interactor?.refreshTweets()
     }
 }
 
@@ -153,19 +167,19 @@ extension SearchViewController: SearchDisplayLogic {
     
     func displaySearchedTweetsError(viewModel: Search.SearchTweets.ViewModel) {
         guard let errorMessage = viewModel.error else { return }
-        showInfo(withTitle: "Ops!", withMessage: errorMessage)
+        self.showInfo(withTitle: "Ops!", withMessage: errorMessage)
     }
     
     func startLoading() {
-        tableView.isHidden
-            ? activityIndicator.startAnimating()
-            : tableView.startAnimating()
+        self.tableView.isHidden
+            ? self.activityIndicator.startAnimating()
+            : self.tableView.startAnimating()
     }
     
     func stopLoading() {
-        tableView.isHidden
-            ? activityIndicator.stopAnimating()
-            : tableView.stopAnimating()
+        self.tableView.isHidden
+            ? self.activityIndicator.stopAnimating()
+            : self.tableView.stopAnimating()
     }
 }
 
@@ -173,11 +187,11 @@ extension SearchViewController: SearchDisplayLogic {
 
 extension SearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return displayedTweets.count
+        return self.displayedTweets.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let displayedTweet = displayedTweets[indexPath.row]
+        let displayedTweet = self.displayedTweets[indexPath.row]
         let cell = Bundle.main.loadNibNamed("TweetTableViewCell", owner: self, options: nil)?.first as! TweetTableViewCell
         
         cell.profileImageView.kf.setImage(with: displayedTweet.authorProfileImageUrl)

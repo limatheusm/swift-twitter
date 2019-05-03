@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xba-xB-v9D">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="12K-Is-16I">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -426,28 +426,32 @@
             </objects>
             <point key="canvasLocation" x="1912" y="44"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="Y14-We-KEI">
+        <!--Splash View Controller-->
+        <scene sceneID="lG8-t1-x8i">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xba-xB-v9D" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="VU3-Ew-TAg">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="pN6-X4-Jbz" kind="relationship" relationship="rootViewController" id="dzG-QY-Spu"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="IJM-0q-akz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="SplashViewController" id="12K-Is-16I" customClass="SplashViewController" customModule="SwiftTwitter" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="p4e-yH-5gm">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_logo" translatesAutoresizingMaskIntoConstraints="NO" id="dIw-th-yCh">
+                                <rect key="frame" x="163" y="409" width="88" height="79"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" name="Primary"/>
+                        <viewLayoutGuide key="safeArea" id="oum-Oi-cFP"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eQc-ZL-o0z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1122" y="-648"/>
+            <point key="canvasLocation" x="784" y="-237"/>
         </scene>
     </scenes>
     <resources>
         <image name="ic_arrow_down" width="16" height="16"/>
         <image name="ic_calendar" width="32" height="32"/>
+        <image name="ic_logo" width="170.5" height="170.5"/>
         <image name="twitter" width="32" height="32"/>
         <namedColor name="Black">
             <color red="0.078000001609325409" green="0.090000003576278687" blue="0.10199999809265137" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

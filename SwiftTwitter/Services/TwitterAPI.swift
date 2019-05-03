@@ -89,6 +89,26 @@ class TwitterAPI: TweetsStoreProtocol {
             completionHandler(.Failure(.CannotFetch(error.localizedDescription)))
         })
     }
+    
+    func verifyCredentials(completionHandler: @escaping (TweetsStoreResult<[String: String?]>) -> Void) {
+        guard let swifterAuth = swifterAuthenticated else {
+            return completionHandler(.Failure(.UserNotLogged("Please, sign in")))
+        }
+        
+        swifterAuth.verifyAccountCredentials(success: { (resultJSON) in
+            guard let userID = resultJSON["id_str"].string else {
+                return completionHandler(.Failure(.UserNotLogged("Please, sign in")))
+            }
+            let response = [
+                "userID": userID,
+                "userProfileImageURL": resultJSON["profile_image_url"].string
+            ]
+            
+            completionHandler(.Success(response))
+        }) { (error) in
+            completionHandler(.Failure(.UnknownReason(error.localizedDescription)))
+        }
+    }
 }
 
 // MARK: - Convenience Methods

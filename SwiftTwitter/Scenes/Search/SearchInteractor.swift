@@ -21,6 +21,7 @@ protocol SearchDataStore {
     var searchText: String? { get }
     var tweets: [Tweet]? { get }
     var userID: String? { get set }
+    var userProfileImageURL: URL? { get set }
 }
 
 class SearchInteractor: SearchBusinessLogic, SearchDataStore {
@@ -30,6 +31,7 @@ class SearchInteractor: SearchBusinessLogic, SearchDataStore {
     var tweets: [Tweet]?
     var searchText: String?
     var userID: String?
+    var userProfileImageURL: URL?
     
     // MARK: - Search tweets
     

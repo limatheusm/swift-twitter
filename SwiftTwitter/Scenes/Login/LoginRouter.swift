@@ -27,29 +27,9 @@ class LoginRouter: NSObject, LoginRoutingLogic, LoginDataPassing {
     // MARK: Routing
     
     func routeToSearch() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let destinationVC = storyboard.instantiateViewController(
-            withIdentifier: "SearchViewController") as? SearchViewController else { return }
-        
-        guard let destinationRouter = destinationVC.router, var destinationDS = destinationRouter.dataStore else {
-            return
-        }
-        
-        guard let dataStore = dataStore, let viewController = viewController else { return }
-        
-        passDataToSearch(source: dataStore, destination: &destinationDS)
-        navigateToSearch(source: viewController)
-    }
-    
-    // MARK: Navigation
-    
-    func navigateToSearch(source: LoginViewController) {
-        source.performSegue(withIdentifier: "LoginSegue", sender: nil)
-    }
-    
-    // MARK: Passing data
-    
-    func passDataToSearch(source: LoginDataStore, destination: inout SearchDataStore) {
-        destination.userID = source.userID
+        AppDelegate.shared.rootViewController.switchToMainScreen(
+            userID: dataStore?.userID,
+            userProfileImageURL: nil
+        )
     }
 }
