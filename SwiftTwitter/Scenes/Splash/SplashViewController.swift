@@ -62,7 +62,7 @@ class SplashViewController: UIViewController {
     // MARK: - Instanciation
     
     class func instanceFromStoryboard() -> SplashViewController {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let storyboard = UIStoryboard(name: Constants.StoryboardName, bundle: nil)
         return storyboard.instantiateViewController(withIdentifier: "SplashViewController") as! SplashViewController
     }
     

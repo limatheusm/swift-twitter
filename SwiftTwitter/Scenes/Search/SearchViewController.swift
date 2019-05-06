@@ -108,7 +108,7 @@ class SearchViewController: UIViewController {
     // MARK: - Instanciation
     
     class func instanceFromStoryboard(userID: String?, userProfileImageURL: URL?) -> SearchViewController {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let storyboard = UIStoryboard(name: Constants.StoryboardName, bundle: nil)
         let controller = storyboard.instantiateViewController(
             withIdentifier: "SearchViewController"
         ) as! SearchViewController

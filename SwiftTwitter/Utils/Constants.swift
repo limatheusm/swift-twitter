@@ -9,6 +9,8 @@
 import UIKit
 
 struct Constants {
+    static let StoryboardName = "Main"
+    
     struct TwitterAPI {
         static let CallbackURL = "swift-twitter://success"
         static let ConsumerAPIKey = "489sNgzZLitRyLyo66pV8A70U"

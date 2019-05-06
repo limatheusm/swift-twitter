@@ -17,17 +17,19 @@ import UIKit
 }
 
 protocol LoginDataPassing {
-    var dataStore: LoginDataStore? { get }
+    var dataStore: LoginDataStore? {
+        get
+    }
 }
 
 class LoginRouter: NSObject, LoginRoutingLogic, LoginDataPassing {
     weak var viewController: LoginViewController?
     var dataStore: LoginDataStore?
     
-    // MARK: Routing
+    // MARK: - Routing
     
     func routeToSearch() {
-        AppDelegate.shared.rootViewController.switchToMainScreen(
+        AppDelegate.shared?.rootViewController?.switchToMainScreen(
             userID: dataStore?.userID,
             userProfileImageURL: nil
         )

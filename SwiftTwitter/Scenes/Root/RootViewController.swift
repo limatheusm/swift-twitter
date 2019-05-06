@@ -9,7 +9,7 @@
 import UIKit
 
 class RootViewController: UIViewController {
-    
+    private let kDurationAnimation = 0.3
     private var currentViewController: UIViewController
     
     init() {
@@ -59,16 +59,16 @@ class RootViewController: UIViewController {
         self.transition(
             from: self.currentViewController,
             to: new,
-            duration: 0.3,
+            duration: kDurationAnimation,
             options: [.transitionCrossDissolve, .curveEaseOut],
             animations: nil) { [weak self] completed in
-                guard let strongSelf = self else {
+                guard let self = self else {
                     completion?()
                     return
                 }
-                strongSelf.currentViewController.removeFromParent()
-                new.didMove(toParent: strongSelf)
-                strongSelf.currentViewController = new
+                self.currentViewController.removeFromParent()
+                new.didMove(toParent: self)
+                self.currentViewController = new
                 completion?()
         }
     }
@@ -79,16 +79,16 @@ class RootViewController: UIViewController {
         self.addChild(new)
         new.view.frame = initialFrame
         self.view.subviews.isEmpty ? self.view.addSubview(new.view) : nil
-        self.transition(from: self.currentViewController, to: new, duration: 0.3, options: [], animations: {
+        self.transition(from: self.currentViewController, to: new, duration: kDurationAnimation, options: [], animations: {
             new.view.frame = self.view.bounds
         }) { [weak self] completed in
-            guard let strongSelf = self else {
+            guard let self = self else {
                 completion?()
                 return
             }
-            strongSelf.currentViewController.removeFromParent()
-            new.didMove(toParent: strongSelf)
-            strongSelf.currentViewController = new
+            self.currentViewController.removeFromParent()
+            new.didMove(toParent: self)
+            self.currentViewController = new
             completion?()
         }
     }

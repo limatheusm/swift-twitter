@@ -28,13 +28,13 @@ class SplashRouter: NSObject, SplashRoutingLogic, SplashDataPassing {
     // MARK: Routing
     
     func routeToMainScreen() {
-        AppDelegate.shared.rootViewController.switchToMainScreen(
+        AppDelegate.shared?.rootViewController?.switchToMainScreen(
             userID: self.dataStore?.userID,
             userProfileImageURL: self.dataStore?.userProfileImageURL
         )
     }
     
     func routeToLoginScreen() {
-        AppDelegate.shared.rootViewController.switchToLogout()
+        AppDelegate.shared?.rootViewController?.switchToLogout()
     }
 }

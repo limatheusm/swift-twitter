@@ -52,11 +52,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 extension AppDelegate {
-    static var shared: AppDelegate {
-        return UIApplication.shared.delegate as! AppDelegate
+    static var shared: AppDelegate? {
+        guard let appDelegateShared = UIApplication.shared.delegate as? AppDelegate else {
+            return nil
+        }
+        
+        return appDelegateShared
     }
     
-    var rootViewController: RootViewController {
-        return window!.rootViewController as! RootViewController
+    var rootViewController: RootViewController? {
+        guard let rootViewController = window!.rootViewController as? RootViewController else {
+            return nil
+        }
+        
+        return rootViewController
     }
 }

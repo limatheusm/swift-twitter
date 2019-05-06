@@ -22,6 +22,8 @@ protocol SplashDataStore {
 }
 
 class SplashInteractor: SplashBusinessLogic, SplashDataStore {
+    let kUserProfileImageURL = "userProfileImageURL"
+    let kUserID = "userID"
     let worker = TweetsWorker(tweetsStore: TwitterAPI())
     var presenter: SplashPresentationLogic?
     var userID: String?
@@ -29,19 +31,23 @@ class SplashInteractor: SplashBusinessLogic, SplashDataStore {
     
     func verifyCredentials() {
         self.worker.verifyCredentials { [weak self] (result) in
+            guard let self = self else {
+                return
+            }
+            
             switch result {
             case .Failure(_):
-                self?.presenter?.presentLoginScreen()
+                self.presenter?.presentLoginScreen()
             case .Success(let result):
-                self?.userID = result["userID"] ?? nil
-                if let profileImage = result["userProfileImageURL"] ?? nil {
-                    self?.userProfileImageURL = URL(string: profileImage)
+                self.userID = result[self.kUserID] ?? nil
+                if let profileImage = result[self.kUserProfileImageURL] ?? nil {
+                    self.userProfileImageURL = URL(string: profileImage)
                 }
                 let response = Splash.VerifyCredentials.Response(
-                    userID: self?.userID,
-                    userProfileImageURL: self?.userProfileImageURL
+                    userID: self.userID,
+                    userProfileImageURL: self.userProfileImageURL
                 )
-                self?.presenter?.presentMainScreen(response: response)
+                self.presenter?.presentMainScreen(response: response)
             }
         }
     }

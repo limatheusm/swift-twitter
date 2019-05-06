@@ -62,7 +62,7 @@ class LoginViewController: UIViewController {
     // MARK: - Instanciation
     
     class func instanceFromStoryboard() -> LoginViewController {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let storyboard = UIStoryboard(name: Constants.StoryboardName, bundle: nil)
         return storyboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
     }
 
@@ -85,7 +85,9 @@ class LoginViewController: UIViewController {
 
 extension LoginViewController: LoginDisplayLogic {
     func displayError(viewModel: Login.OAuth.ViewModel) {
-        guard let errorMessage = viewModel.errorMessage else { return }
+        guard let errorMessage = viewModel.errorMessage else {
+            return
+        }
         self.showInfo(withTitle: "Ops!", withMessage: errorMessage)
     }
     
