@@ -7,15 +7,19 @@
 //
 
 import UIKit
+import Swifter
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        self.window?.rootViewController = RootViewController()
+        self.window?.makeKeyAndVisible()
+    
         return true
     }
 
@@ -41,6 +45,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        Swifter.handleOpenURL(url)
+        return true
+    }
 }
 
+extension AppDelegate {
+    static var shared: AppDelegate? {
+        guard let appDelegateShared = UIApplication.shared.delegate as? AppDelegate else {
+            return nil
+        }
+        
+        return appDelegateShared
+    }
+    
+    var rootViewController: RootViewController? {
+        guard let rootViewController = window!.rootViewController as? RootViewController else {
+            return nil
+        }
+        
+        return rootViewController
+    }
+}

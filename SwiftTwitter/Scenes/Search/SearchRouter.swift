@@ -17,7 +17,7 @@ import UIKit
 }
 
 protocol SearchDataPassing {
-    var dataStore: SearchDataStore? { get }
+    var dataStore: SearchDataStore? { get set }
 }
 
 class SearchRouter: NSObject, SearchRoutingLogic, SearchDataPassing {
